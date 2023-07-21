@@ -1,0 +1,52 @@
+/* I created a fun table stating some of my favorite characters and then another table listing their enemies. I then wrote a SQL code to join the two in a third table.*/
+
+CREATE TABLE favorite_characters
+(id INTEGER PRIMARY KEY,
+name TEXT,
+type TEXT,
+gift TEXT,
+age INTEGER,
+story TEXT);
+
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Elfaba", "both", "magic", 38, "Wicked");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Mary", "hero", "magic", 40, "Mary Poppins");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Banker", "villan", "greed", 90, "Mary Poppins");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Dorothy", "hero", "kindness", 16, "Wicked");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Madea", "both", "kindness", 60, "Madea Goes to Jail");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Cops", "villan", "law", 40, "Madea Goes to Jail");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Essun", "both", "magic", 42, "The Fifth Season");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Shafa", "both", "magic", 150, "The Fifth Season");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Jay", "hero", "stamina", 30, "Men in Black");
+INSERT into favorite_characters (name, type, gift, age, story)
+    VALUES ("Bug", "villan", "persistence", 5, "Men in Black");
+
+CREATE TABLE enemies
+(id INTEGER PRIMARY KEY,
+character1_id INTEGER,
+character2_id INTEGER);
+
+INSERT into enemies (character1_id, character2_id)
+VALUES (1, 4);
+INSERT into enemies (character1_id, character2_id)
+VALUES (2, 3);
+INSERT into enemies (character1_id, character2_id)
+VALUES (5, 6);
+INSERT into enemies (character1_id, character2_id)
+VALUES (7, 8);
+INSERT into enemies (character1_id, character2_id)
+VALUES (9, 10);
+
+SELECT a.name, b.name FROM enemies
+JOIN favorite_characters a
+ON enemies.character1_id = a.id
+JOIN favorite_characters b
+ON enemies.character2_id = b.id;
